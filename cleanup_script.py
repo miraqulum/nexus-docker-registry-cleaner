@@ -3,7 +3,7 @@ import requests
 from getpass import getpass
 from dateutil.parser import parse
 
-repository_url = os.environ.get("NXRM_REPOSITORY_URL", "https://repository.dev.dynabic.com")
+repository_url = os.environ.get("NXRM_REPOSITORY_URL", "https://repository.dev.com")
 num_tags_to_keep = int(os.environ.get("NXRM_NUM_TAGS_TO_KEEP", 10))
 
 nxrm_username = os.environ.get("NXRM_USERNAME")
