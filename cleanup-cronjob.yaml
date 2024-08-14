@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cleanup-job
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cleanup
+            image: docker.registry.svc.k8s.dynabic.com/ck8s/nexus-docker-cleaner
+            env:
+            - name: NXRM_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: nxrm-credentials
+                  key: username
+            - name: NXRM_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nxrm-credentials
+                  key: password
+          imagePullSecrets:
+            - name: ck-pull-secret
+          schedulerName: default-scheduler
+          restartPolicy: OnFailure
