@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: cleanup
-            image: docker.registry.svc.k8s.dynabic.com/ck8s/nexus-docker-cleaner
+            image: docker.registry.dev.com/ck8s/nexus-docker-cleaner
             env:
             - name: NXRM_USERNAME
               valueFrom:
