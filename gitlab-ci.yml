@@ -1,0 +1,24 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - push
+
+variables:
+  IMAGE_NAME: docker.registry.svc.k8s.dynabic.com/ck8s/nexus-docker-cleaner
+
+before_script:
+  - docker login -u "$NXRM_USERNAME" -p "$NXRM_PASSWORD" docker.registry.svc.k8s.dynabic.com/ck8s/nexus-docker-cleaner
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_NAME .
+  
+push:
+  stage: push
+  script:
+    - docker push $IMAGE_NAME
