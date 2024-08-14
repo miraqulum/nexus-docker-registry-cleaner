@@ -8,10 +8,10 @@ stages:
   - push
 
 variables:
-  IMAGE_NAME: docker.registry.svc.k8s.dynabic.com/ck8s/nexus-docker-cleaner
+  IMAGE_NAME: docker.registry.dev.com/ck8s/nexus-docker-cleaner
 
 before_script:
-  - docker login -u "$NXRM_USERNAME" -p "$NXRM_PASSWORD" docker.registry.svc.k8s.dynabic.com/ck8s/nexus-docker-cleaner
+  - docker login -u "$NXRM_USERNAME" -p "$NXRM_PASSWORD" docker.registry.dev.com/ck8s/nexus-docker-cleaner
 
 build:
   stage: build
